@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+  <script>
+    var positions = ['Junior developer', 'Middle developer', 'Senior developer', 'Junior QA', 'Middle QA', 'Senior QA', 'Project manager']; 
+    var names = [];
+    function getNames(){
+        for(var i = 0; i < positions.length; i++){
+        names[i] = prompt('Enter names', '');
+        }
+    }
+    getNames();
+    console.log(names); 
+    var team = {};
+    function createTeam(){
+        for(var i = 0; i < positions.length; i++){
+            team[i] = {};
+        }
+        for(var i = 0; i < positions.length; i++){
+            team[i].name = names[i];
+            team[i].position = positions[i];
+        }
+    }
+    createTeam();
+    console.log(team);
+        function getSalary(){
+        for(var i = 0; i < positions.length; i++){
+            if(team[i].position.indexOf('Junior') == 0){
+                team[i].salary = Math.floor(Math.random() * (1000 - 500) +500);
+            }else if(team[i].position.indexOf('Middle') == 0){
+                team[i].salary = Math.floor(Math.random() * (2000 - 1500) +1500);
+            }else if(team[i].position.indexOf('Senior') == 0){
+                team[i].salary = Math.floor(Math.random() * (3000 - 2500) +2500);
+            }else{
+                team[i].salary = Math.floor(Math.random() * (4500 - 4000) +4000);
+            }
+        }
+    }
+    getSalary();
+    console.log(team);
+        for(var i = 0; i < positions.length; i++){
+        team[i].tellAboutYourSelf = function(){
+            console.log('Меня зовут ' + team[i].name + ' и я - ' + team[i].position + '. Я зарабатываю ' + team[i].salary + '$.');
+        }
+    }
+    for(var i = 0; i < positions.length; i++){
+        team[i].tellAboutYourSelf();
+    }
+        team.showTeam = function(){
+        for(var i = 0; i < positions.length; i++){
+            console.log(team[i].name + ' - ' + team[i].position + '. Зарплата - ' + team[i].salary + '$.');
+        }
+    }
+    team.showTeam();  
+    </script>  
+</body>
+</html>
